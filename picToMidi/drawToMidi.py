@@ -64,8 +64,7 @@ def generateNotes(event=None):
     duration = 1/10    # In beats
     tempo    = 10   # In BPM
     volume   = 100  # 0-127, as per the MIDI stand1
-    MyMIDI = MIDIFile(1)  # One track, defaults to format 1 (tempo track is created
-                          # automatically)
+    MyMIDI = MIDIFile(1)  # One track
     MyMIDI.addTempo(track, time, tempo)
 
     #populate midi
