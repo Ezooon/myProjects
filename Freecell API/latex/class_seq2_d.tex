@@ -1,0 +1,248 @@
+\hypertarget{class_seq2_d}{}\section{Seq2D$<$ T $>$ Class Template Reference}
+\label{class_seq2_d}\index{Seq2\+D$<$ T $>$@{Seq2\+D$<$ T $>$}}
+
+
+Class representing a 2D sequence of type T\textquotesingle{}s.  
+
+
+
+
+{\ttfamily \#include $<$Seq2\+D.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_seq2_d_a3575add9a5feb2d1981eba9ee2c42512}{Seq2D}} (std\+::vector$<$ std\+::vector$<$ T $>$$>$ S, double scl)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_seq2_d}{Seq2D}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_seq2_d_aac0f9bedacb88caa2e748a07a81639d5}{set}} (\mbox{\hyperlink{class_point_t}{PointT}} p, T v)
+\begin{DoxyCompactList}\small\item\em Sets the value v at \mbox{\hyperlink{class_point_t}{PointT}} p. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_seq2_d_af4f1cf4ccf0e0d6bcba5a52f984877cc}{get}} (\mbox{\hyperlink{class_point_t}{PointT}} p)
+\begin{DoxyCompactList}\small\item\em Gets the value of type T at \mbox{\hyperlink{class_point_t}{PointT}} p. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d_acd9009bd107c4408a10baf540aa69858}{get\+Num\+Row}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of rows in the 2D sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d_a4a38e61808f6c856bd46a47a0fbb183f}{get\+Num\+Col}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of columns in the 2D sequence. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_seq2_d_a6d4fe7251d0867677d6a84a7c3fbb959}{get\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Gets the scale of the 2D sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d_a7c1a0f4d5c1c27c0ad123f86e6b54904}{count}} (T t)
+\begin{DoxyCompactList}\small\item\em Counts the number of time t appears in the 2D Sequence. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d_ac57bbdcbb5d743363ce464acd6286eff}{count}} (\mbox{\hyperlink{class_line_t}{LineT}} l, T t)
+\begin{DoxyCompactList}\small\item\em Counts the number of time t appears in a \mbox{\hyperlink{class_line_t}{LineT}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d_a81e5e36a3928888b4dbc8732ac3e8d5f}{count}} (\mbox{\hyperlink{class_path_t}{PathT}} pth, T t)
+\begin{DoxyCompactList}\small\item\em Counts the number of time t appears in a \mbox{\hyperlink{class_path_t}{PathT}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_seq2_d_ac950d78724ce1154292628c87596ac69}{length}} (\mbox{\hyperlink{class_path_t}{PathT}} pth)
+\begin{DoxyCompactList}\small\item\em Uses scale to find the length of a path. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_seq2_d_ac5131076ac848c7e2e1a6be678d4437b}{connected}} (\mbox{\hyperlink{class_point_t}{PointT}} p1, \mbox{\hyperlink{class_point_t}{PointT}} p2)
+\begin{DoxyCompactList}\small\item\em Determines if a path exists between p1 and p2 with all of the points on the path being of the same value while p1 and p2 are considered to be the start and end points of the path, respectively. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Seq2\+D$<$ T $>$}
+
+Class representing a 2D sequence of type T\textquotesingle{}s. 
+
+The 2D sequence is implemented as a sequence of sequence of type T 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_seq2_d_a3575add9a5feb2d1981eba9ee2c42512}\label{class_seq2_d_a3575add9a5feb2d1981eba9ee2c42512}} 
+\index{Seq2D@{Seq2D}!Seq2D@{Seq2D}}
+\index{Seq2D@{Seq2D}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{Seq2\+D()}{Seq2D()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::\mbox{\hyperlink{class_seq2_d}{Seq2D}} (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ T $>$$>$}]{S,  }\item[{double}]{scl }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_seq2_d}{Seq2D}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S} & A vector of vectors of type T \\
+\hline
+{\em scl} & A double representing a scale \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_seq2_d_ac5131076ac848c7e2e1a6be678d4437b}\label{class_seq2_d_ac5131076ac848c7e2e1a6be678d4437b}} 
+\index{Seq2D@{Seq2D}!connected@{connected}}
+\index{connected@{connected}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{connected()}{connected()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::connected (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{p1,  }\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{p2 }\end{DoxyParamCaption})}
+
+
+
+Determines if a path exists between p1 and p2 with all of the points on the path being of the same value while p1 and p2 are considered to be the start and end points of the path, respectively. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & \mbox{\hyperlink{class_point_t}{PointT}} representing the start of the \mbox{\hyperlink{class_path_t}{PathT}} \\
+\hline
+{\em p1} & \mbox{\hyperlink{class_point_t}{PointT}} representing the end of the \mbox{\hyperlink{class_path_t}{PathT}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer containing the length of a path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_a7c1a0f4d5c1c27c0ad123f86e6b54904}\label{class_seq2_d_a7c1a0f4d5c1c27c0ad123f86e6b54904}} 
+\index{Seq2D@{Seq2D}!count@{count}}
+\index{count@{count}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{count()}{count()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::count (\begin{DoxyParamCaption}\item[{T}]{t }\end{DoxyParamCaption})}
+
+
+
+Counts the number of time t appears in the 2D Sequence. 
+
+\begin{DoxyReturn}{Returns}
+A natural containing the number of times t appears in the 2D sequence 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_ac57bbdcbb5d743363ce464acd6286eff}\label{class_seq2_d_ac57bbdcbb5d743363ce464acd6286eff}} 
+\index{Seq2D@{Seq2D}!count@{count}}
+\index{count@{count}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{count()}{count()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_line_t}{LineT}}}]{l,  }\item[{T}]{t }\end{DoxyParamCaption})}
+
+
+
+Counts the number of time t appears in a \mbox{\hyperlink{class_line_t}{LineT}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Value of type T \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A natural containing the number of times t appears in a \mbox{\hyperlink{class_line_t}{LineT}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_a81e5e36a3928888b4dbc8732ac3e8d5f}\label{class_seq2_d_a81e5e36a3928888b4dbc8732ac3e8d5f}} 
+\index{Seq2D@{Seq2D}!count@{count}}
+\index{count@{count}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{count()}{count()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_path_t}{PathT}}}]{pth,  }\item[{T}]{t }\end{DoxyParamCaption})}
+
+
+
+Counts the number of time t appears in a \mbox{\hyperlink{class_path_t}{PathT}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Value of type T \\
+\hline
+{\em l} & A \mbox{\hyperlink{class_line_t}{LineT}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A natural containing the number of times t appears in a \mbox{\hyperlink{class_path_t}{PathT}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_af4f1cf4ccf0e0d6bcba5a52f984877cc}\label{class_seq2_d_af4f1cf4ccf0e0d6bcba5a52f984877cc}} 
+\index{Seq2D@{Seq2D}!get@{get}}
+\index{get@{get}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{p }\end{DoxyParamCaption})}
+
+
+
+Gets the value of type T at \mbox{\hyperlink{class_point_t}{PointT}} p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \mbox{\hyperlink{class_point_t}{PointT}} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of type T at \mbox{\hyperlink{class_point_t}{PointT}} p 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_a4a38e61808f6c856bd46a47a0fbb183f}\label{class_seq2_d_a4a38e61808f6c856bd46a47a0fbb183f}} 
+\index{Seq2D@{Seq2D}!get\+Num\+Col@{get\+Num\+Col}}
+\index{get\+Num\+Col@{get\+Num\+Col}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{get\+Num\+Col()}{getNumCol()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::get\+Num\+Col (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of columns in the 2D sequence. 
+
+\begin{DoxyReturn}{Returns}
+The number of columns in the 2D sequence 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_acd9009bd107c4408a10baf540aa69858}\label{class_seq2_d_acd9009bd107c4408a10baf540aa69858}} 
+\index{Seq2D@{Seq2D}!get\+Num\+Row@{get\+Num\+Row}}
+\index{get\+Num\+Row@{get\+Num\+Row}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{get\+Num\+Row()}{getNumRow()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::get\+Num\+Row (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of rows in the 2D sequence. 
+
+\begin{DoxyReturn}{Returns}
+The number of rows in the 2D sequence 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_a6d4fe7251d0867677d6a84a7c3fbb959}\label{class_seq2_d_a6d4fe7251d0867677d6a84a7c3fbb959}} 
+\index{Seq2D@{Seq2D}!get\+Scale@{get\+Scale}}
+\index{get\+Scale@{get\+Scale}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{get\+Scale()}{getScale()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+double \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the scale of the 2D sequence. 
+
+\begin{DoxyReturn}{Returns}
+The scale of the 2D sequence (paramater scale) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_ac950d78724ce1154292628c87596ac69}\label{class_seq2_d_ac950d78724ce1154292628c87596ac69}} 
+\index{Seq2D@{Seq2D}!length@{length}}
+\index{length@{length}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_path_t}{PathT}}}]{pth }\end{DoxyParamCaption})}
+
+
+
+Uses scale to find the length of a path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Value of type T \\
+\hline
+{\em pth} & A \mbox{\hyperlink{class_path_t}{PathT}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer containing the length of a path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_seq2_d_aac0f9bedacb88caa2e748a07a81639d5}\label{class_seq2_d_aac0f9bedacb88caa2e748a07a81639d5}} 
+\index{Seq2D@{Seq2D}!set@{set}}
+\index{set@{set}!Seq2D@{Seq2D}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_seq2_d}{Seq2D}}$<$ T $>$\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{p,  }\item[{T}]{v }\end{DoxyParamCaption})}
+
+
+
+Sets the value v at \mbox{\hyperlink{class_point_t}{PointT}} p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The \mbox{\hyperlink{class_point_t}{PointT}} representing the value in s that needs to be changed \\
+\hline
+{\em v} & A value of arbitrary type T \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_seq2_d_8h}{Seq2\+D.\+h}}\end{DoxyCompactItemize}

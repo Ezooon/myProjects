@@ -1,0 +1,671 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+%% Comments
+
+\usepackage{color}
+
+\newif\ifcomments\commentstrue
+
+\ifcomments
+\newcommand{\authornote}[3]{\textcolor{#1}{[#3 ---#2]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\else
+\newcommand{\authornote}[3]{}
+\newcommand{\todo}[1]{}
+\fi
+
+\newcommand{\wss}[1]{\authornote{blue}{SS}{#1}}
+
+\title{Assignment 4 Specifications}
+\author{SFWR ENG 2AA4}
+
+\begin {document}
+
+\maketitle
+
+This
+document shows the complete specification for the modules used to store the state of the game Freecell.  In this specification natural numbers
+($\mathbb{N}$) include zero ($0$). In addition, this specification assumes that the first element in a sequence is indexed at 0 (i.e 0 based indexing).
+
+\newpage
+
+\section* {Card Types Module}
+
+\subsection*{Module}
+
+CardTypes
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+Suit = \{hearts, diamonds, spades, clubs\}\\
+Value = \{ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king\}
+
+\subsubsection* {Exported Access Programs}
+
+None
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\newpage
+
+\section* {Pile Types Module}
+
+\subsection*{Module}
+
+PileTypes
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+PileType =\{foundation, cell, tableau\}
+
+\subsubsection* {Exported Access Programs}
+
+None
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\newpage
+
+\section* {Card ADT Module}
+
+\subsection*{Template Module}
+
+CardT
+
+\subsection* {Uses}
+
+CardTypes
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+CardT = ?
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+CardT & Value, Suit & CardT & \\
+\hline
+S & ~ & Suit & ~\\
+\hline
+V & ~ & Value & ~\\
+\hline
+isOppositeColour & CardT & $\mathbb{B}$ & ~\\
+\hline
+isOneLess & CardT & $\mathbb{B}$ & ~\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$s$: Suit\\
+$v$: Value
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions}
+
+The constructor CardT is called for each object instance before any other
+access routine is called for that object.  The constructor cannot be called on
+an existing object.
+
+\subsubsection* {Access Routine Semantics}
+
+PointT($val, st$):
+\begin{itemize}
+\item transition: $v, s := val, st$
+\item output: $out := \mathit{self}$
+\item exception: None
+\end{itemize}
+
+\noindent S():
+\begin{itemize}
+\item output: $out := s$
+\item exception: None
+\end{itemize}
+
+\noindent V():
+\begin{itemize}
+\item output: $out := v$
+\item exception: None
+\end{itemize}
+
+\noindent isOppositeColour($card$):
+\begin{itemize}
+\item output: 
+\begin{tabular}{|p{3.6cm}|p{4.0cm}|l|}
+\hhline{~|~|-|}
+\multicolumn{1}{r}{} & \multicolumn{1}{r|}{} & \multicolumn{1}{l|}{$out := $}\\
+\hhline{|-|-|-|}
+$v = \mbox{hearts}$ & $card.V() = \mbox{hearts}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{diamonds}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{spades}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{clubs}$ & $true$\\
+\hhline{|-|-|-|}
+$v = \mbox{diamonds}$ & $card.V() = \mbox{hearts}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{diamonds}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{spades}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{clubs}$ & $true$\\
+\hhline{|-|-|-|}
+$v = \mbox{spades}$ & $card.V() = \mbox{hearts}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{diamonds}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{spades}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{clubs}$ & $false$\\
+\hhline{|-|-|-|}
+$v = \mbox{clubs}$ & $card.V() = \mbox{hearts}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{diamonds}$ & $true$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{spades}$ & $false$\\
+\hhline{|~|-|-|}
+~ & $card.V() = \mbox{clubs}$ & $false$\\
+\hhline{|-|-|-|}
+\end{tabular}
+\item exception: None
+\end{itemize}
+
+\noindent isOneLess($card$):
+\begin{itemize}
+\item output: $out := ((\mbox{numVal}(v)-\mbox{numVal}(card.\mbox{V}())) = -1)$
+\item exception: None
+\end{itemize}
+\subsection*{Local Functions}
+
+numVal: $\mbox{Value} \rightarrow \mbox{$\mathbb{N}$}$\\
+
+\noindent numVal$(v) \equiv$
+
+\medskip
+
+\begin{tabular}{|l|l|}
+\hline
+$v = \mbox{ace}$ & 0\\
+\hline
+$v = \mbox{two}$ & 1\\
+\hline
+$v = \mbox{three}$ & 2\\
+\hline
+$v = \mbox{four}$ & 3\\
+\hline
+$v = \mbox{five}$ & 4\\
+\hline
+$v = \mbox{six}$ & 5\\
+\hline
+$v = \mbox{seven}$ & 6\\
+\hline
+$v = \mbox{eight}$ & 7\\
+\hline
+$v = \mbox{nine}$ & 8\\
+\hline
+$v = \mbox{ten}$ & 9\\
+\hline
+$v = \mbox{jack}$ & 10\\
+\hline
+$v = \mbox{queen}$ & 11\\
+\hline
+$v = \mbox{king}$ & 12\\
+\hline
+\end{tabular}
+
+\newpage
+
+\section* {Pile ADT Module}
+
+\subsection*{Template Module}
+
+PileT
+
+\subsection* {Uses}
+
+CardT
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+PileT = ?
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+PileT & ~ & PileT & \\
+\hline
+add & CardT & ~ & ~\\
+\hline
+top & ~ & CardT & ~\\
+\hline
+rm & ~ & CardT & ~\\
+\hline
+size & ~ & $\mathbb{N}$ & ~\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$s$: sequence of CardT
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions}
+
+The constructor PileT is called for each object instance before any other
+access routine is called for that object.  The constructor cannot be called on
+an existing object. It is also assumed that the top() and rm() routines are not called when the number of cardT's in s is 0. In addition, the output is assumed to occur before the transition in the rm() routine.
+
+\subsubsection* {Access Routine Semantics}
+
+PileT():
+\begin{itemize}
+\item transition: None
+\item output: $out := \mathit{self}$
+\item exception: None
+\end{itemize}
+
+\noindent add($card$):
+\begin{itemize}
+\item transition: $s := s || <card>$
+\item exception: None
+\end{itemize}
+
+\noindent top():
+\begin{itemize}
+\item output: $out := s[|s|-1]$
+\item exception: None
+\end{itemize}
+
+\noindent rm():
+\begin{itemize}
+\item output: $out := s[|s|-1]$
+\item transition: $s := s \setminus <s[|s|-1]>$ \textit{\#That is, the sequence is the same as before except the last element is removed}
+\item exception: None
+\end{itemize}
+
+\noindent size():
+\begin{itemize}
+\item output: $out := |s|$ 
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Freecell Game ADT}
+
+\subsection* {Template Module}
+
+FreecellGame
+
+\subsection* {Uses}
+
+PileTypes, CardTypes, CardT
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+FreecellGame = ?
+
+\subsubsection* {Exported Constants}
+
+F\_C\_SIZE = 4\\
+T\_SIZE = 8
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{3.5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+FreecellGame & ~ & FreecellGame & ~\\
+\hline
+newGame & seq of CardT & ~ & invalid\_deck\\
+\hline
+getCard & PileType, $\mathbb{N}$ & CardT & \begin{tabular}{@{}c@{}} $\mbox{invalid\_availability}$,\\$\mbox{invalid\_index}$ 
+\end{tabular} \\
+\hline
+size & PileType, $\mathbb{N}$ & $\mathbb{N}$ & invalid\_index\\
+\hline
+moveCard & PileType, PileType, $\mathbb{N}$, $\mathbb{N}$ & ~ & $\mbox{invalid\_move}$ \\
+\hline
+gameWon & ~  & $\mathbb{B}$ & \\
+\hline
+noValidMoves & ~  & $\mathbb{B}$ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+foundP: set of PileT\\
+cellP: set of PileT\\
+tabP: set of PileT\\
+
+\subsubsection* {State Invariant}
+
+$|\mbox{foundP}| = \mbox{F\_C\_SIZE}$ \\
+$|\mbox{cellP}| = \mbox{F\_C\_SIZE}$ \\
+$|\mbox{tabP}| = \mbox{T\_SIZE}$
+
+\subsubsection* {Assumptions}
+
+\begin{itemize}
+\item The FreecellGame() constructor and the newGame(deck) routine is called for each object instance before any
+other access routine is called for that object.  The constructor can only be
+called once but the newGame(deck) routine can be called many times, as it essentially resets the game.
+\item Assume that the state variables, foundP, cellP, and tabP correspond to a sequence of foundation piles, cell piles, and tableau piles. Foundation piles generally correspond to the piles in the top right of a freecell game, cell piles in the top left, and tableau piles are the center playing piles. Also assume that the deck of cards used with the newGame(deck) routine includes cards that are shuffled. 
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+FreecellGame():
+\begin{itemize}
+\item transition: None
+\item output: $\mathit{out} := \mathit{self}$
+\item exception: None\\
+\end{itemize}
+
+\noindent newGame($deck$):
+\begin{itemize}
+\item transition: 
+\begin{tabular}{|p{9cm}|}
+\hhline{~|}
+\multicolumn{1}{}{}\\
+\hhline{|-|}
+$foundP := \{PileT(),PileT(),PileT(),PileT()\}$ \\
+\hhline{|-|}
+$cellP := \{PileT(),PileT(),PileT(),PileT()\}$ \\
+\hhline{|-|}
+$tabP[0] := \{i : \mathbb{N} | i \in [0..6] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[1] := \{i : \mathbb{N} | i \in [7..13] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[2] := \{i : \mathbb{N} | i \in [14..20] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[3] := \{i : \mathbb{N} | i \in [21..27] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[4] := \{i : \mathbb{N} | i \in [28..33] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[5] := \{i : \mathbb{N} | i \in [34..39] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[6] := \{i : \mathbb{N} | i \in [40..45] : deck[i]\}$ \\
+\hhline{|-|}
+$tabP[7] := \{i : \mathbb{N} | i \in [46..51] : deck[i]\}$ \\
+\hhline{|-|}
+\end{tabular}\\
+\textit{\#All of these transitions occur}
+\item exception: $exc := \mbox{areDuplicateCards($deck$)} | \lnot(|deck| = 52) \Rightarrow \mbox{invalid\_deck} $\\
+\end{itemize}
+
+\noindent getCard($pile, i$):
+\begin{itemize}
+\item output: 
+\begin{tabular}{|p{3.5cm}|l|}
+\hhline{~|-|}
+\multicolumn{1}{r|}{} & \multicolumn{1}{l|}{$out :=$}\\
+\hhline{|-|-|}
+$pile = \mbox{foundation}$ & $foundP[i].\mbox{top()}$\\
+\hhline{|-|-|}
+$pile = \mbox{cell}$ & $cellP[i].\mbox{top()}$\\
+\hhline{|-|-|}
+$pile = \mbox{tableau}$ & $tabP[i].\mbox{top()}$\\
+\hhline{|-|-|}
+\end{tabular}
+
+\item exception:
+\begin{tabular}{|p{3.5cm}|l|}
+\hhline{~|-|}
+\multicolumn{1}{r|}{} & \multicolumn{1}{l|}{$exc :=$}\\
+\hhline{|-|-|}
+$pile = \mbox{foundation}$ & 
+  \begin{tabular}{@{}c@{}}$\lnot(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$ $|$  \\ $(foundP[i].\mbox{size()} = 0) \Rightarrow \mbox{invalid\_availability}$\end{tabular} \\
+\hhline{|-|-|}
+$pile = \mbox{cell}$ & 
+  \begin{tabular}{@{}c@{}}$\lnot(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$ $|$  \\ $(cellP[i].\mbox{size()} = 0) \Rightarrow \mbox{invalid\_availability}$\end{tabular} \\
+\hhline{|-|-|}
+$pile = \mbox{tableau}$ & 
+  \begin{tabular}{@{}c@{}}$\lnot(i \in [0..(\mbox{T\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$ $|$  \\ $(tabP[i].\mbox{size()} = 0) \Rightarrow \mbox{invalid\_availability}$\end{tabular} \\
+\hhline{|-|-|}
+\end{tabular}
+\end{itemize}
+
+\noindent size($pile, i$):
+\begin{itemize}
+\item output: 
+\begin{tabular}{|p{3.5cm}|l|}
+\hhline{~|-|}
+\multicolumn{1}{r|}{} & \multicolumn{1}{l|}{$out :=$}\\
+\hhline{|-|-|}
+$pile = \mbox{foundation}$ & $foundP[i].\mbox{size()}$\\
+\hhline{|-|-|}
+$pile = \mbox{cell}$ & $cellP[i].\mbox{size()}$\\
+\hhline{|-|-|}
+$pile = \mbox{tableau}$ & $tabP[i].\mbox{size()}$\\
+\hhline{|-|-|}
+\end{tabular}
+\end{itemize}
+
+\begin{itemize}
+\item exception: 
+\begin{tabular}{|p{3.5cm}|l|}
+\hhline{~|-|}
+\multicolumn{1}{r|}{} & \multicolumn{1}{l|}{$exc :=$}\\
+\hhline{|-|-|}
+$pile = \mbox{foundation}$ & $(\lnot(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$\\
+\hhline{|-|-|}
+$pile = \mbox{cell}$ & $(\lnot(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$\\
+\hhline{|-|-|}
+$pile = \mbox{tableau}$ & $(\lnot(i \in [0..\mbox{T\_SIZE}-1)]) \Rightarrow \mbox{invalid\_index}$\\
+\hhline{|-|-|}
+\end{tabular}
+\end{itemize}
+
+\noindent moveCard($f, to, i, j$):
+\begin{itemize}
+\item transition: 
+\begin{tabular}{|p{3.0cm}|p{3.0cm}|l|}
+\hhline{~|~|~|}
+\multicolumn{1}{r}{} & \multicolumn{1}{r}{} & \multicolumn{1}{r}{}\\
+\hhline{|-|-|-|}
+$f = \mbox{foundation}$ & $to = \mbox{foundation}$ & $foundP[i] := foundP[i].\mbox{add}(foundP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $foundP[i] := foundP[i].\mbox{add}(cellP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $foundP[i] := foundP[i].\mbox{add}(tabP[j].\mbox{rm()})$\\
+\hhline{|-|-|-|}
+$f = \mbox{cell}$ & $to = \mbox{foundation}$ & $cellP[i] := cellP[i].\mbox{add}(foundP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $cellP[i] := cellP[i].\mbox{add}(cellP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $cellP[i] := cellP[i].\mbox{add}(tabP[j].\mbox{rm()})$\\
+\hhline{|-|-|-|}
+$f = \mbox{tableau}$ & $to = \mbox{foundation}$ & $tabP[i] := tabP[i].\mbox{add}(foundP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $tabP[i] := tabP[i].\mbox{add}(cellP[j].\mbox{rm()})$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $tabP[i] := tabP[i].\mbox{add}(tabP[j].\mbox{rm()})$\\
+\hhline{|-|-|-|}
+\end{tabular}
+
+\item exception: 
+\begin{tabular}{|p{3.0cm}|p{3.0cm}|l|}
+\hhline{~|~|~|}
+\multicolumn{1}{r}{} & \multicolumn{1}{r}{} & \multicolumn{1}{r}{}\\
+\hhline{|-|-|-|}
+$f = \mbox{foundation}$ & $to = \mbox{foundation}$ & $\lnot\mbox{canMoveFtoF}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $\lnot\mbox{canMoveFtoC}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $\lnot\mbox{canMoveFtoT}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|-|-|-|}
+$f = \mbox{cell}$ & $to = \mbox{foundation}$ & $\lnot\mbox{canMoveCtoF}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $\lnot\mbox{canMoveCtoC}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $\lnot\mbox{canMoveCtoT}(i,j) \Rightarrow \mbox{invalid\_move} $\\
+\hhline{|-|-|-|}
+$f = \mbox{tableau}$ & $to = \mbox{foundation}$ & $\lnot \mbox{canMoveTtoF}(i,j)\Rightarrow \mbox{invalid\_move}$\\
+\hhline{|~|-|-|}
+~ & $to = \mbox{cell}$ & $\lnot \mbox{canMoveTtoC}(i,j) \Rightarrow \mbox{invalid\_move}$ \\
+\hhline{|~|-|-|}
+~ & $to = \mbox{tableau}$ & $\lnot \mbox{canMoveTtoT}(i,j) \Rightarrow \mbox{invalid\_move}$\\
+\hhline{|-|-|-|}
+\end{tabular}
+\end{itemize}
+
+\noindent gameWon():
+\begin{itemize}
+\item output: $out := \forall(i : \mathbb{N} | i \in [0..(\mbox{F\_C\_SIZE}-1)] : foundP[i].size() = 13)$
+\item exception: None
+\end{itemize}
+
+\noindent noValidMoves():
+\begin{itemize}
+\item output: $out := \forall(i,j : \mathbb{N} | i \in [0..(\mbox{F\_C\_SIZE}-1)] |
+j \in [0..(\mbox{T\_SIZE})] : \lnot\mbox{canMoveFtoF}(i,i) \land \lnot\mbox{canMoveFtoC}(i,i) \land \lnot\mbox{canMoveFtoT}(i,j) \land \lnot\mbox{canMoveCtoF}(i,i) \land \lnot\mbox{canMoveCtoC}(i,i) \land \lnot\mbox{canMoveCtoT}(i,j) \land \lnot\mbox{canMoveTtoF}(j,i) \land \lnot\mbox{canMoveTtoC}(j,i) \land \lnot\mbox{canMoveTtoT}(j,j)) $
+\item exception: None
+\end{itemize}
+
+\subsection*{Local Functions}
+
+areDuplicateCards: $\mbox{seq of CardT} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent areDuplicateCards$(deck) \equiv$
+\medskip
+$\lnot(\forall(i,j : \mathbb{N} | i \in [0..(|deck|-2)]|j \in [i+1..(|deck|-1)]: (deck[i].S() \not= deck[j].S()) \land (deck[i].V() \not= deck[j].V())))$\\
+
+\noindent canMoveFtoF: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveFtoF$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (foundP[i].\mbox{size()} \not= 0) \land (foundP[j].\mbox{size()} = 0) \land (foundP[i].\mbox{top}().\mbox{V()} = ace) $\\
+\medskip
+
+\noindent canMoveFtoC: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveFtoC$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (foundP[i].\mbox{size()} \not= 0) \land (cellP[j].\mbox{size()} = 0) $\\
+\medskip
+
+\noindent canMoveFtoT: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveFtoT$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{T\_SIZE}-1)]) \land (foundP[i].\mbox{size()} \not= 0) \land ((tabP[j].\mbox{size()} = 0) \lor foundP[i].\mbox{top()}.\mbox{isOppositeColour}(tabP[j].\mbox{top()}) \land$\\$ (foundP[i].\mbox{top()}.\mbox{isOneLess}(tabP[j].\mbox{top()}))) $\\
+\medskip
+
+\noindent canMoveCtoF: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveCtoF$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (cellP[i].\mbox{size()} \not= 0) \land ((foundP[j].\mbox{size()} = 0) \lor cellP[i].\mbox{top()}.\mbox{isOppositeColour}(foundP[j].\mbox{top()}) \land$\\$ (cellP[i].\mbox{top()}.\mbox{isOneLess}(foundP[j].\mbox{top()}))) $\\
+\medskip
+
+\noindent canMoveCtoC: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveCtoC$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (cellP[i].\mbox{size()} \not= 0) \land (cellP[j].\mbox{size()} = 0) $\\
+\medskip
+
+\noindent canMoveCtoT: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveTtoT$(i,j) \equiv$
+$(i \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (j \in [0..(\mbox{T\_SIZE}-1)]) \land (cellP[i].\mbox{size()} \not= 0) \land ((tabP[j].\mbox{size()} = 0) \lor cellP[i].\mbox{top()}.\mbox{isOppositeColour}(tabP[j].\mbox{top()}) \land$\\$ (cellP[i].\mbox{top()}.\mbox{isOneLess}(tabP[j].\mbox{top()}))) $\\
+\medskip
+
+\noindent canMoveTtoF: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveTtoF$(i,j) \equiv$
+$(i \in [0..(\mbox{T\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (tabP[i].\mbox{size()} \not= 0) \land ((foundP[j].\mbox{size()} = 0) \lor \lnot(tabP[i].\mbox{top()}.\mbox{isOppositeColour}(foundP[j].\mbox{top()})) \land$\\$ (foundP[j].\mbox{top()}.\mbox{isOneLess}(tabP[i].\mbox{top()}))) $\\
+\medskip
+
+\noindent canMoveTtoC: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveTtoC$(i,j) \equiv$
+$(i \in [0..(\mbox{T\_SIZE}-1)]) \land (j \in [0..(\mbox{F\_C\_SIZE}-1)]) \land (tabP[i].\mbox{size()} \not= 0) \land (cellP[j].\mbox{size()} = 0) $\\
+\medskip
+
+\noindent canMoveTtoT: $\mbox{N} \times \mbox{N} \rightarrow \mbox{$\mathbb{B}$}$
+
+\noindent canMoveTtoT$(i,j) \equiv$
+$(i \in [0..(\mbox{T\_SIZE}-1)]) \land (j \in [0..(\mbox{T\_SIZE}-1)]) \land (tabP[i].\mbox{size()} \not= 0) \land ((tabP[j].\mbox{size()} = 0) \lor tabP[i].\mbox{top()}.\mbox{isOppositeColour}(tabP[j].\mbox{top()}) \land$\\$ (tabP[i].\mbox{top()}.\mbox{isOneLess}(tabP[j].\mbox{top()}))) $\\
+\medskip
+\newpage
+
+\end {document}

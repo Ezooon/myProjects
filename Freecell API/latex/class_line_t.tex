@@ -1,0 +1,163 @@
+\hypertarget{class_line_t}{}\section{LineT Class Reference}
+\label{class_line_t}\index{LineT@{LineT}}
+
+
+Class implementing a 2D line.  
+
+
+
+
+{\ttfamily \#include $<$Line\+A\+D\+T.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_line_t_a51d13d4deda368693b417b3b6c5dea46}{LineT}} (\mbox{\hyperlink{class_point_t}{PointT}} st, \mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}} ornt, \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} l)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_line_t}{LineT}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_point_t}{PointT}} \mbox{\hyperlink{class_line_t_a786eea84b67064264d3e70e5c820a134}{strt}} ()
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_point_t}{PointT}} that marks the start of the line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_point_t}{PointT}} \mbox{\hyperlink{class_line_t_a9030b7ce0f9a9c7d79322fc0adf03bcc}{end}} ()
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_point_t}{PointT}} that marks the end of the line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}} \mbox{\hyperlink{class_line_t_a27377bf25d8fc96b2c25affabd28d72d}{orient}} ()
+\begin{DoxyCompactList}\small\item\em Gets the CompassT orientation of the line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_line_t_a89f2a51bee8acb60e6a0aa1c52a195f7}{len}} ()
+\begin{DoxyCompactList}\small\item\em Gets the length of the line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_line_t}{LineT}} \mbox{\hyperlink{class_line_t_a0db306d68e88b498c92a225c9404cd4c}{flip}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_line_t}{LineT}} flipped 180 degrees from the original line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_line_t}{LineT}} \mbox{\hyperlink{class_line_t_a427979474891765018a3a30f458313a3}{rotate}} (\mbox{\hyperlink{_map_types_8h_a86e9c41121ebe1e27666eb8a30668ffb}{RotateT}} r)
+\begin{DoxyCompactList}\small\item\em Rotates a line in a given direction specified by r (CW or C\+CW) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_line_t}{LineT}} \mbox{\hyperlink{class_line_t_a3c70c0e1f35f2966f61b840af34cbd5a}{translate}} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Translates a line by dx units in the x-\/direction and dy units in the y-\/direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class implementing a 2D line. 
+
+The line is represented using a starting \mbox{\hyperlink{class_point_t}{PointT}}, a CompassT orientation (N, E, S, or W), and a natural number representing the length of the line. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_line_t_a51d13d4deda368693b417b3b6c5dea46}\label{class_line_t_a51d13d4deda368693b417b3b6c5dea46}} 
+\index{LineT@{LineT}!LineT@{LineT}}
+\index{LineT@{LineT}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{Line\+T()}{LineT()}}
+{\footnotesize\ttfamily Line\+T\+::\+LineT (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{st,  }\item[{\mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}}}]{ornt,  }\item[{\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_line_t}{LineT}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & The starting \mbox{\hyperlink{class_point_t}{PointT}} of the line \\
+\hline
+{\em ornt} & The orientation of the line \\
+\hline
+{\em l} & The length of the line \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_line_t_a9030b7ce0f9a9c7d79322fc0adf03bcc}\label{class_line_t_a9030b7ce0f9a9c7d79322fc0adf03bcc}} 
+\index{LineT@{LineT}!end@{end}}
+\index{end@{end}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_point_t}{PointT}} Line\+T\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the \mbox{\hyperlink{class_point_t}{PointT}} that marks the end of the line. 
+
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{class_point_t}{PointT}} that marks the end of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a0db306d68e88b498c92a225c9404cd4c}\label{class_line_t_a0db306d68e88b498c92a225c9404cd4c}} 
+\index{LineT@{LineT}!flip@{flip}}
+\index{flip@{flip}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{flip()}{flip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_line_t}{LineT}} Line\+T\+::flip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new \mbox{\hyperlink{class_line_t}{LineT}} flipped 180 degrees from the original line. 
+
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{class_line_t}{LineT}} flipped 180 degrees from the original line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a89f2a51bee8acb60e6a0aa1c52a195f7}\label{class_line_t_a89f2a51bee8acb60e6a0aa1c52a195f7}} 
+\index{LineT@{LineT}!len@{len}}
+\index{len@{len}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{len()}{len()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} Line\+T\+::len (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the length of the line. 
+
+\begin{DoxyReturn}{Returns}
+The length of the line as a natural number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a27377bf25d8fc96b2c25affabd28d72d}\label{class_line_t_a27377bf25d8fc96b2c25affabd28d72d}} 
+\index{LineT@{LineT}!orient@{orient}}
+\index{orient@{orient}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{orient()}{orient()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}} Line\+T\+::orient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the CompassT orientation of the line. 
+
+\begin{DoxyReturn}{Returns}
+The CompassT orientation of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a427979474891765018a3a30f458313a3}\label{class_line_t_a427979474891765018a3a30f458313a3}} 
+\index{LineT@{LineT}!rotate@{rotate}}
+\index{rotate@{rotate}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_line_t}{LineT}} Line\+T\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_map_types_8h_a86e9c41121ebe1e27666eb8a30668ffb}{RotateT}}}]{r }\end{DoxyParamCaption})}
+
+
+
+Rotates a line in a given direction specified by r (CW or C\+CW) 
+
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{class_line_t}{LineT}} rotated either CW or C\+CW 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a786eea84b67064264d3e70e5c820a134}\label{class_line_t_a786eea84b67064264d3e70e5c820a134}} 
+\index{LineT@{LineT}!strt@{strt}}
+\index{strt@{strt}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{strt()}{strt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_point_t}{PointT}} Line\+T\+::strt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the \mbox{\hyperlink{class_point_t}{PointT}} that marks the start of the line. 
+
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{class_point_t}{PointT}} that marks the start of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_line_t_a3c70c0e1f35f2966f61b840af34cbd5a}\label{class_line_t_a3c70c0e1f35f2966f61b840af34cbd5a}} 
+\index{LineT@{LineT}!translate@{translate}}
+\index{translate@{translate}!LineT@{LineT}}
+\subsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_line_t}{LineT}} Line\+T\+::translate (\begin{DoxyParamCaption}\item[{int}]{dx,  }\item[{int}]{dy }\end{DoxyParamCaption})}
+
+
+
+Translates a line by dx units in the x-\/direction and dy units in the y-\/direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & An integer representing the amount to translate in the x-\/direction \\
+\hline
+{\em dy} & An integer representing the amount to translate in the y-\/direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{class_line_t}{LineT}} flipped 180 degrees from the original line 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_line_a_d_t_8h}{Line\+A\+D\+T.\+h}}\end{DoxyCompactItemize}

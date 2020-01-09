@@ -1,0 +1,172 @@
+\hypertarget{class_path_t}{}\section{PathT Class Reference}
+\label{class_path_t}\index{PathT@{PathT}}
+
+
+Class representing a path in the 2D plane.  
+
+
+
+
+{\ttfamily \#include $<$Path\+A\+D\+T.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_path_t_af4d989217199e7e981bd939925a28243}{PathT}} (\mbox{\hyperlink{class_point_t}{PointT}} st, \mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}} ornt, \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} l)
+\begin{DoxyCompactList}\small\item\em Constructs a new Path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_path_t_a4c8da4849d7547b64824d82021412d3a}{append}} (\mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}} ornt, \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} l)
+\begin{DoxyCompactList}\small\item\em Append a new line to the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_point_t}{PointT}} \mbox{\hyperlink{class_path_t_a5aab4a4082e4772ff4c52834f3bec7e2}{strt}} ()
+\begin{DoxyCompactList}\small\item\em Gets the initial \mbox{\hyperlink{class_point_t}{PointT}} of the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_point_t}{PointT}} \mbox{\hyperlink{class_path_t_a7bc47a3ad8ea135e82458381f9e6985b}{end}} ()
+\begin{DoxyCompactList}\small\item\em Gets the last \mbox{\hyperlink{class_point_t}{PointT}} of the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_line_t}{LineT}} \mbox{\hyperlink{class_path_t_ac9898c0a98d32ffeaa2d5dcd20699e4d}{line}} (int i)
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_line_t}{LineT}} at index i in the sequence s. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_path_t_a6899210e56f6d080949878a1d1b3c361}{size}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of lines in the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} \mbox{\hyperlink{class_path_t_aacb8d7cde9698022b8c49c8d5cc94f5e}{len}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of \mbox{\hyperlink{class_point_t}{PointT}}\textquotesingle{}s in the path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_path_t}{PathT}} \mbox{\hyperlink{class_path_t_a4fad10e40e0a0da2b5343b6105f5d9c7}{translate}} (int dx, int dy)
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_path_t}{PathT}} translated by dx units in the x direction and dy units in the y direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a path in the 2D plane. 
+
+The path is stored as a sequence of \mbox{\hyperlink{class_line_t}{LineT}}\textquotesingle{}s 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_path_t_af4d989217199e7e981bd939925a28243}\label{class_path_t_af4d989217199e7e981bd939925a28243}} 
+\index{PathT@{PathT}!PathT@{PathT}}
+\index{PathT@{PathT}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{Path\+T()}{PathT()}}
+{\footnotesize\ttfamily Path\+T\+::\+PathT (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_point_t}{PointT}}}]{st,  }\item[{\mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}}}]{ornt,  }\item[{\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Constructs a new Path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em st} & A \mbox{\hyperlink{class_point_t}{PointT}} representing the path\textquotesingle{}s starting point \\
+\hline
+{\em ornt} & A CompassT representing the orientation of the first line \\
+\hline
+{\em l} & Length of the first line as a natural number \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_path_t_a4c8da4849d7547b64824d82021412d3a}\label{class_path_t_a4c8da4849d7547b64824d82021412d3a}} 
+\index{PathT@{PathT}!append@{append}}
+\index{append@{append}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily void Path\+T\+::append (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_map_types_8h_a02f3db508dc0c595c2572f474f14b2fa}{CompassT}}}]{ornt,  }\item[{\mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}}}]{l }\end{DoxyParamCaption})}
+
+
+
+Append a new line to the path. 
+
+The append line starts at a point adjacent to the end point of the previous line in the direction ornt 
+\begin{DoxyParams}{Parameters}
+{\em ornt} & The appended line\textquotesingle{}s orientation \\
+\hline
+{\em l} & Length of the newly appended line as a natural number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_path_t_a7bc47a3ad8ea135e82458381f9e6985b}\label{class_path_t_a7bc47a3ad8ea135e82458381f9e6985b}} 
+\index{PathT@{PathT}!end@{end}}
+\index{end@{end}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_point_t}{PointT}} Path\+T\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the last \mbox{\hyperlink{class_point_t}{PointT}} of the path. 
+
+\begin{DoxyReturn}{Returns}
+The last \mbox{\hyperlink{class_point_t}{PointT}} in the path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_t_aacb8d7cde9698022b8c49c8d5cc94f5e}\label{class_path_t_aacb8d7cde9698022b8c49c8d5cc94f5e}} 
+\index{PathT@{PathT}!len@{len}}
+\index{len@{len}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{len()}{len()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} Path\+T\+::len (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of \mbox{\hyperlink{class_point_t}{PointT}}\textquotesingle{}s in the path. 
+
+\begin{DoxyReturn}{Returns}
+The number of \mbox{\hyperlink{class_point_t}{PointT}}\textquotesingle{}s in the path as a natural number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_t_ac9898c0a98d32ffeaa2d5dcd20699e4d}\label{class_path_t_ac9898c0a98d32ffeaa2d5dcd20699e4d}} 
+\index{PathT@{PathT}!line@{line}}
+\index{line@{line}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{line()}{line()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_line_t}{LineT}} Path\+T\+::line (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Gets the \mbox{\hyperlink{class_line_t}{LineT}} at index i in the sequence s. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & An integer corresponding to an index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{class_line_t}{LineT}} at index i in the sequence s 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_t_a6899210e56f6d080949878a1d1b3c361}\label{class_path_t_a6899210e56f6d080949878a1d1b3c361}} 
+\index{PathT@{PathT}!size@{size}}
+\index{size@{size}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_path_a_d_t_8h_a56638ee9d162e8cce3a15f92d2023d6e}{nat}} Path\+T\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of lines in the path. 
+
+\begin{DoxyReturn}{Returns}
+The number of lines in the \mbox{\hyperlink{class_path_t}{PathT}} as a natural number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_t_a5aab4a4082e4772ff4c52834f3bec7e2}\label{class_path_t_a5aab4a4082e4772ff4c52834f3bec7e2}} 
+\index{PathT@{PathT}!strt@{strt}}
+\index{strt@{strt}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{strt()}{strt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_point_t}{PointT}} Path\+T\+::strt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the initial \mbox{\hyperlink{class_point_t}{PointT}} of the path. 
+
+\begin{DoxyReturn}{Returns}
+The initial \mbox{\hyperlink{class_point_t}{PointT}} of the path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_path_t_a4fad10e40e0a0da2b5343b6105f5d9c7}\label{class_path_t_a4fad10e40e0a0da2b5343b6105f5d9c7}} 
+\index{PathT@{PathT}!translate@{translate}}
+\index{translate@{translate}!PathT@{PathT}}
+\subsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_path_t}{PathT}} Path\+T\+::translate (\begin{DoxyParamCaption}\item[{int}]{dx,  }\item[{int}]{dy }\end{DoxyParamCaption})}
+
+
+
+Creates a new \mbox{\hyperlink{class_path_t}{PathT}} translated by dx units in the x direction and dy units in the y direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & An integer representing the amount to translate in the x direction \\
+\hline
+{\em dy} & An integer representing the amount to translate in the y direction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{class_path_t}{PathT}} where all \mbox{\hyperlink{class_line_t}{LineT}}\textquotesingle{}s in the \mbox{\hyperlink{class_path_t}{PathT}} are translated dx units in the x direction and dy units in the y direction 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_path_a_d_t_8h}{Path\+A\+D\+T.\+h}}\end{DoxyCompactItemize}

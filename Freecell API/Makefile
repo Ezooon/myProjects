@@ -1,0 +1,56 @@
+SRC_DIRS := src
+C_SRCS := $(foreach srcdir,$(SRC_DIRS),$(wildcard $(srcdir)/*.c))
+CXX_SRCS := $(foreach srcdir,$(SRC_DIRS),$(wildcard $(srcdir)/*.cpp))
+C_OBJS := ${C_SRCS:.c=.o}
+CXX_OBJS := ${CXX_SRCS:.cpp=.o}
+OBJS := $(C_OBJS) $(CXX_OBJS)
+INCLUDE_DIRS := include
+LIBRARY_DIRS :=
+LIBRARIES :=
+
+test_NAME := test
+test_DIR := bin
+test_FULL := $(test_DIR)/$(test_NAME)
+test_SRC_DIRS := test
+test_C_SRCS := $(foreach srcdir,$(test_SRC_DIRS),$(wildcard $(srcdir)/*.c))
+test_CXX_SRCS := $(foreach srcdir,$(test_SRC_DIRS),$(wildcard $(srcdir)/*.cpp))
+test_C_OBJS := ${test_C_SRCS:.c=.o}
+test_CXX_OBJS := ${test_CXX_SRCS:.cpp=.o}
+test_OBJS := $(test_C_OBJS) $(test_CXX_OBJS)
+test_INCLUDE_DIRS := catch
+test_LIBRARY_DIRS :=
+test_LIBRARIES :=
+
+all_OBJS := $(OBJS) $(test_OBJS)
+DEP := $(all_OBJS:%.o=%.d)
+
+CXXFLAGS += -std=c++11
+CXXFLAGS += $(foreach includedir,$(INCLUDE_DIRS),-I$(includedir))
+LDFLAGS += $(foreach librarydir,$(LIBRARY_DIRS),-L$(librarydir))
+LDFLAGS += $(foreach library,$(LIBRARIES),-l$(library))
+
+.PHONY: test experiment doc clean
+
+test: CXXFLAGS += $(foreach includedir,$(test_INCLUDE_DIRS),-I$(includedir))
+test: LDFLAGS += $(foreach librarydir,$(test_LIBRARY_DIRS),-L$(librarydir))
+test: LDFLAGS += $(foreach library,$(test_LIBRARIES),-l$(library))
+
+test: $(test_FULL)
+	./$(test_FULL)
+
+doc: 
+	doxygen doxConfig
+  
+$(test_FULL): $(test_OBJS) $(OBJS)
+	$(LINK.cc) $^ -o $@
+
+-include $(DEP)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
+  
+clean:
+	@- $(RM) $(test_FULL)
+	@- $(RM) $(test_OBJS)
+	@- $(RM) $(OBJS)
+	@- $(RM) $(DEP)
